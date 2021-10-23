@@ -1,4 +1,4 @@
-module Styles exposing (button, colors, title, fontStyles)
+module Styles exposing (button, colors, fontStyles, title)
 
 import Element exposing (..)
 import Element.Background as Background

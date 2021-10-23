@@ -7,14 +7,11 @@ import Element exposing (..)
 import Element.Background as Background
 import Element.Border as Border
 import Element.Events exposing (..)
-import Element.Font as Font exposing (center)
-import Element.Input exposing (button)
+import Element.Font as Font
 import Element.Region exposing (..)
-import Html exposing (header, p)
-import Http exposing (Header)
+import Html exposing (header)
 import Router.Routes exposing (..)
 import Router.Types exposing (Msg(..))
-import String exposing (pad)
 import Styles exposing (colors, fontStyles)
 import Types exposing (..)
 
@@ -29,10 +26,16 @@ view model =
                  , width fill
                  , height fill
                  , centerY
-                 , width <| maximum 1000 fill
+                 , width <| maximum 1100 fill
                  , scrollbarY
                  , height <| maximum 1000 fill
                  , inFront <| header
+                 , Border.shadow
+                    { offset = ( 1, 1 )
+                    , size = 3
+                    , blur = 3
+                    , color = colors.gray
+                    }
                  ]
                     ++ fontStyles.standard
                 )
@@ -58,9 +61,16 @@ renderRoute model =
 
 
 homePageView =
-    column [ centerX, width fill, spacing 40, Font.color colors.white, inFront <| header ]
+    column
+        [ centerX
+        , width fill
+        , spacing 40
+        , Font.color colors.white
+        , inFront <| header
+        , Background.color colors.blue
+        ]
         [ header
-        , column [ width fill, centerX, height <| minimum 300 fill, centerY ]
+        , column [ width fill, centerX, height <| minimum 300 fill, centerY, paddingXY 10 0 ]
             [ row [ width fill, Font.size 30, centerX, paddingXY 0 20 ] [ row [ centerX ] [ text "Technical Skills" ] ]
             , row [ width fill, Font.size 15, centerX ]
                 [ column [ spacing 10, centerX, width fill ]
@@ -89,7 +99,7 @@ homePageView =
                     ]
                 ]
             ]
-        , column [ width fill, centerX, height <| minimum 300 fill, centerY ]
+        , column [ width fill, centerX, height <| minimum 300 fill, centerY, paddingXY 10 0 ]
             [ row [ width fill, Font.size 30, centerX, paddingXY 0 20 ] [ row [ centerX ] [ text "Work Experience" ] ]
             , row [ width fill, Font.size 15, centerX ]
                 [ column [ spacing 10, centerX ]
@@ -104,11 +114,11 @@ homePageView =
                     ]
                 ]
             ]
-        , column [ width fill, centerX, height <| minimum 500 fill, centerY ]
+        , column [ width fill, centerX, height <| minimum 500 fill, centerY, paddingXY 10 0 ]
             [ row [ width fill, Font.size 30, centerX, paddingXY 0 20 ] [ row [ centerX ] [ text "Personal Projects" ] ]
             , row [ width fill, Font.size 15, centerX, spacing 20 ]
                 [ column [ spacing 10, centerX, width fill ]
-                    [ image [ width fill, height <| maximum 160 fill ]
+                    [ image [ width fill, height <| maximum 200 fill ]
                         { src = "/images/score.jpeg"
                         , description = "score"
                         }
@@ -116,7 +126,7 @@ homePageView =
                     , row [ centerX ] [ paragraph [] [ text "I did this project.I did this project.I did this project.I did this project.I did this project.I did this project.I did this project.I did this project.I did this project.I did this project.I did this project." ] ]
                     ]
                 , column [ spacing 10, centerX, width fill ]
-                    [ image [ width fill, height <| maximum 160 fill ]
+                    [ image [ width fill, height <| maximum 200 fill ]
                         { src = "/images/farmersMarket.jpeg"
                         , description = "farmersMarket"
                         }
@@ -124,7 +134,7 @@ homePageView =
                     , row [ centerX ] [ paragraph [] [ text "I did this project. I did this project. I did this project.I did this project.I did this projectI did this project.I did this project.I did this project.I did this project.I did this project.I did this project." ] ]
                     ]
                 , column [ spacing 10, centerX, width fill ]
-                    [ image [ width fill, height <| maximum 160 fill ]
+                    [ image [ width fill, height <| maximum 200 fill ]
                         { src = "/images/rateMyCourse.jpeg"
                         , description = "rateMyCourse"
                         }
@@ -137,7 +147,6 @@ homePageView =
         , row [ centerX ] [ text "Hack Athons" ]
         , row [ centerX ] [ text "Education" ]
         , row [ centerX ] [ text "Relevant Courses" ]
-        
         , row
             [ centerX
             , Background.color colors.blue
@@ -188,8 +197,14 @@ header =
          , centerX
          , padding 60
          , Font.color colors.white
-         , Background.image "images/test.jpeg"
-         , width fill
+         , width <| maximum 1100 fill
+         , Background.color colors.blue
+         , Border.shadow
+            { offset = ( 1, 1 )
+            , size = 3
+            , blur = 3
+            , color = colors.gray
+            }
          ]
             ++ fontStyles.standard
         )
