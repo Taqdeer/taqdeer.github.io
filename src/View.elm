@@ -20,7 +20,7 @@ view : Model -> Browser.Document Types.Msg
 view model =
     { title = "Taqdeer Grewal"
     , body =
-        [ Element.layout [ Background.image "/images/test.jpeg", inFront <| header ] <|
+        [ Element.layout [  inFront <| header ] <|
             el
                 ([ centerX
                  , width fill
@@ -67,7 +67,7 @@ homePageView =
         , spacing 40
         , Font.color colors.white
         , inFront <| header
-        , Background.color colors.blue
+        , Background.color colors.gray
         ]
         [ header
         , column [ width fill, centerX, height <| minimum 300 fill, centerY, paddingXY 10 0 ]
@@ -198,7 +198,7 @@ header =
          , padding 60
          , Font.color colors.white
          , width <| maximum 1100 fill
-         , Background.color colors.blue
+         , Background.color colors.gray
          , Border.shadow
             { offset = ( 1, 1 )
             , size = 3
