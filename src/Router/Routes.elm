@@ -9,6 +9,7 @@ type Page
     | NotFound
     | CatsPage
     | CounterPage
+    | WorkExperiencePage
 
 
 routes : Parser (Page -> a) a
@@ -18,6 +19,7 @@ routes =
         , map NotFound (s "404")
         , map CatsPage (s "cats")
         , map CounterPage (s "counter")
+        , map WorkExperiencePage (s "workexperience")
         ]
 
 
@@ -35,3 +37,6 @@ toPath page =
 
         CounterPage ->
             "/counter"
+
+        WorkExperiencePage ->
+            "/workexperience"
