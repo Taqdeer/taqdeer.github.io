@@ -7,9 +7,8 @@ import Url.Parser exposing ((</>), Parser, map, oneOf, parse, s, top)
 type Page
     = Home
     | NotFound
-    | CatsPage
-    | CounterPage
     | WorkExperiencePage
+    | TechnicalSkillsPage
 
 
 routes : Parser (Page -> a) a
@@ -17,9 +16,8 @@ routes =
     oneOf
         [ map Home top
         , map NotFound (s "404")
-        , map CatsPage (s "cats")
-        , map CounterPage (s "counter")
         , map WorkExperiencePage (s "workexperience")
+        , map TechnicalSkillsPage (s "technicalskills")
         ]
 
 
@@ -32,11 +30,8 @@ toPath page =
         NotFound ->
             "/404"
 
-        CatsPage ->
-            "/cats"
-
-        CounterPage ->
-            "/counter"
-
         WorkExperiencePage ->
             "/workexperience"
+
+        TechnicalSkillsPage ->
+            "/technicalskills"

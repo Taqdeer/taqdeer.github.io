@@ -1,16 +1,13 @@
-module WorkExperience.View exposing (view)
+module TechnicalSkills.View exposing (..)
 
-import WorkExperience.Types exposing (..)
+import TechnicalSkills.Types exposing (..)
 import Element exposing (..)
-import Element.Events exposing (..)
-import Element.Input exposing (button)
-import RemoteData exposing (..)
+import Styles exposing (..)
 import Styles exposing (..)
 import Element.Background as Background
 import Element.Font as Font
 import Router.Routes exposing (toPath)
 import Router.Routes exposing (Page(..))
-
 
 view : Model -> Element Msg
 view model =
@@ -38,5 +35,5 @@ view model =
                     ]
                 ]
             ]
-        , column [ width fill, centerX ] [ row [ centerX ] [ text "Work Experience" ] ]
+        , column [ width fill, centerX ] [ row [ centerX ] [ text "Technical Skills" ] ]
         ]

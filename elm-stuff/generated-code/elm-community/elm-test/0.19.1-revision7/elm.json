@@ -3,8 +3,7 @@
     "source-directories": [
         "src",
         "../../../../../../../../../../../../usr/local/lib/node_modules/elm-test/elm/src",
-        "../../../../../src",
-        "../../../../../tests"
+        "../../../../../src"
     ],
     "elm-version": "0.19.1",
     "dependencies": {
