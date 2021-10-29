@@ -30,13 +30,13 @@ layout pageName content=
             [ row [ centerX, Font.size 50, padding 50 ] [ text "Taqdeer Grewal" ]
             , row [ width fill, centerX, centerY ]
                 [ column [ width fill, centerX, centerY, spacingXY 0 40 ]
-                    [ row [ centerX, centerY, mouseOver [Font.color colors.gray] ]
+                    [ row [ centerX, centerY, mouseOver [Font.color colors.gray, Font.size 25] ]
                         [ link []
                             { url = toPath TechnicalSkillsPage
                             , label = text "Technical Skills"
                             }
                         ]
-                    , row [ centerX, centerY , mouseOver [Font.color colors.gray]]
+                    , row [ centerX, centerY , mouseOver [Font.color colors.gray, Font.size 25]]
                         [ link []
                             { url = toPath WorkExperiencePage
                             , label = text "Work Experience"
