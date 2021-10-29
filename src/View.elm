@@ -7,6 +7,7 @@ import Element.Border as Border
 import Element.Events exposing (..)
 import Element.Font as Font
 import Element.Region exposing (..)
+import Layout exposing (..)
 import Router.Routes exposing (..)
 import Router.Types exposing (Msg(..))
 import Styles exposing (colors, fontStyles)
@@ -59,29 +60,13 @@ renderRoute model =
 
 
 homePageView =
-    row [ width fill, height fill, centerX, centerY ]
-        [ column [ width <| maximum 500 fill, height fill, centerY, padding 20, Background.color colors.blue, Font.color colors.white ]
-            [ row [ centerX, Font.size 60, padding 50 ] [ text "Taqdeer Grewal" ]
-            , row [ width fill, centerX, centerY ]
-                [ column [ width fill, centerX, centerY, spacingXY 0 40 ]
-                    [ row [ centerX, centerY ]
-                        [ link []
-                            { url = toPath TechnicalSkillsPage
-                            , label = text "Technical Skills"
-                            }
-                        ]
-                    , row [ centerX, centerY ]
-                        [ link []
-                            { url = toPath WorkExperiencePage
-                            , label = text "Work Experience"
-                            }
-                        ]
-                    , row [ centerX, centerY ] [ text "Personal Projects" ]
-                    , row [ centerX, centerY ] [ text "Group Projects" ]
-                    , row [ centerX, centerY ] [ text "Education" ]
-                    , row [ centerX, centerY ] [ text "Hackathons" ]
-                    ]
-                ]
-            ]
-        , column [ width fill, centerX ] [ row [ centerX ] [ text "Taqdeer" ] ]
+    Layout.layout "Taqdeer Grewal" content
+
+
+content =
+    column [ width fill, spacing 20 ]
+        [ row [] [ text "C++" ]
+        , row [] [ text "Python" ]
+        , row [] [ text "JavaScript" ]
+        , row [] [ text "Java" ]
         ]
