@@ -11820,28 +11820,7 @@ var $author$project$View$content = A2(
 			_List_Nil,
 			_List_fromArray(
 				[
-					$mdgriffith$elm_ui$Element$text('C++')
-				])),
-			A2(
-			$mdgriffith$elm_ui$Element$row,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$text('Python')
-				])),
-			A2(
-			$mdgriffith$elm_ui$Element$row,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$text('JavaScript')
-				])),
-			A2(
-			$mdgriffith$elm_ui$Element$row,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$text('Java')
+					$mdgriffith$elm_ui$Element$text('Taqdeer')
 				]))
 		]));
 var $mdgriffith$elm_ui$Internal$Model$Right = {$: 'Right'};
@@ -12399,11 +12378,42 @@ var $author$project$Layout$layout = F2(
 var $author$project$View$homePageView = A2($author$project$Layout$layout, 'Taqdeer Grewal', $author$project$View$content);
 var $mdgriffith$elm_ui$Element$map = $mdgriffith$elm_ui$Internal$Model$map;
 var $author$project$TechnicalSkills$View$content = A2(
-	$mdgriffith$elm_ui$Element$row,
-	_List_Nil,
+	$mdgriffith$elm_ui$Element$column,
 	_List_fromArray(
 		[
-			$mdgriffith$elm_ui$Element$text('helllo')
+			$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+			$mdgriffith$elm_ui$Element$spacing(20)
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$mdgriffith$elm_ui$Element$row,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$text('C++')
+				])),
+			A2(
+			$mdgriffith$elm_ui$Element$row,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$text('Python')
+				])),
+			A2(
+			$mdgriffith$elm_ui$Element$row,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$text('JavaScript')
+				])),
+			A2(
+			$mdgriffith$elm_ui$Element$row,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$text('Java')
+				]))
 		]));
 var $author$project$TechnicalSkills$View$view = function (model) {
 	return A2($author$project$Layout$layout, 'Technical Skills', $author$project$TechnicalSkills$View$content);

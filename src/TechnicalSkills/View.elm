@@ -11,4 +11,10 @@ view model =
           Layout.layout "Technical Skills" content
           
 
-content = row [] [ text "helllo"]
+content =
+    column [ width fill, spacing 20 ]
+        [ row [] [ text "C++" ]
+        , row [] [ text "Python" ]
+        , row [] [ text "JavaScript" ]
+        , row [] [ text "Java" ]
+        ]

@@ -65,8 +65,6 @@ homePageView =
 
 content =
     column [ width fill, spacing 20 ]
-        [ row [] [ text "C++" ]
-        , row [] [ text "Python" ]
-        , row [] [ text "JavaScript" ]
-        , row [] [ text "Java" ]
+        [ row [] [ text "Taqdeer" ]
+       
         ]
