@@ -42,10 +42,30 @@ layout pageName content=
                             , label = text "Work Experience"
                             }
                         ]
-                    , row [ centerX, centerY ] [ text "Personal Projects" ]
-                    , row [ centerX, centerY ] [ text "Group Projects" ]
-                    , row [ centerX, centerY ] [ text "Education" ]
-                    , row [ centerX, centerY ] [ text "Hackathons" ]
+                    , row [ centerX, centerY , mouseOver [Font.color colors.gray, Font.size 25]]
+                        [ link []
+                            { url = toPath WorkExperiencePage
+                            , label = text "Personal Projects"
+                            }
+                        ]
+                    , row [ centerX, centerY , mouseOver [Font.color colors.gray, Font.size 25]]
+                        [ link []
+                            { url = toPath WorkExperiencePage
+                            , label = text "Group Projects"
+                            }
+                        ]
+                    , row [ centerX, centerY , mouseOver [Font.color colors.gray, Font.size 25]]
+                        [ link []
+                            { url = toPath WorkExperiencePage
+                            , label = text "Education"
+                            }
+                        ]
+                    , row [ centerX, centerY , mouseOver [Font.color colors.gray, Font.size 25]]
+                        [ link []
+                            { url = toPath WorkExperiencePage
+                            , label = text "Hackathons"
+                            }
+                        ]
                     ]
                 ]
             ]
