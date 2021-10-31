@@ -5226,10 +5226,22 @@ var $elm$core$Basics$composeL = F3(
 		return g(
 			f(x));
 	});
-var $author$project$Types$Model = F3(
-	function (router, workexperience, technicalskills) {
-		return {router: router, technicalskills: technicalskills, workexperience: workexperience};
+var $author$project$Types$Model = F7(
+	function (router, workexperience, technicalskills, personalprojects, groupprojects, education, hackathons) {
+		return {education: education, groupprojects: groupprojects, hackathons: hackathons, personalprojects: personalprojects, router: router, technicalskills: technicalskills, workexperience: workexperience};
 	});
+var $author$project$Types$MsgForEducation = function (a) {
+	return {$: 'MsgForEducation', a: a};
+};
+var $author$project$Types$MsgForGroupProjects = function (a) {
+	return {$: 'MsgForGroupProjects', a: a};
+};
+var $author$project$Types$MsgForHackathons = function (a) {
+	return {$: 'MsgForHackathons', a: a};
+};
+var $author$project$Types$MsgForPersonalProjects = function (a) {
+	return {$: 'MsgForPersonalProjects', a: a};
+};
 var $author$project$Types$MsgForTechnicalSkills = function (a) {
 	return {$: 'MsgForTechnicalSkills', a: a};
 };
@@ -5264,8 +5276,29 @@ var $author$project$Update$andMapCmd = function (msg) {
 		$Fresheyeball$elm_return$Return$andMap,
 		$Fresheyeball$elm_return$Return$mapCmd(msg));
 };
-var $author$project$Router$Routes$NotFound = {$: 'NotFound'};
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
+var $Fresheyeball$elm_return$Return$return = F2(
+	function (a, b) {
+		return $elm$core$Basics$identity(
+			_Utils_Tuple2(a, b));
+	});
+var $author$project$Education$Update$init = A2(
+	$Fresheyeball$elm_return$Return$return,
+	{sample: ''},
+	$elm$core$Platform$Cmd$none);
+var $author$project$GroupProjects$Update$init = A2(
+	$Fresheyeball$elm_return$Return$return,
+	{sample: ''},
+	$elm$core$Platform$Cmd$none);
+var $author$project$Hackathons$Update$init = A2(
+	$Fresheyeball$elm_return$Return$return,
+	{sample: ''},
+	$elm$core$Platform$Cmd$none);
+var $author$project$PersonalProjects$Update$init = A2(
+	$Fresheyeball$elm_return$Return$return,
+	{sample: ''},
+	$elm$core$Platform$Cmd$none);
+var $author$project$Router$Routes$NotFound = {$: 'NotFound'};
 var $elm$url$Url$Parser$State = F5(
 	function (visited, unvisited, params, frag, value) {
 		return {frag: frag, params: params, unvisited: unvisited, value: value, visited: visited};
@@ -5900,12 +5933,11 @@ var $elm$url$Url$Parser$parse = F2(
 					url.fragment,
 					$elm$core$Basics$identity)));
 	});
-var $Fresheyeball$elm_return$Return$return = F2(
-	function (a, b) {
-		return $elm$core$Basics$identity(
-			_Utils_Tuple2(a, b));
-	});
+var $author$project$Router$Routes$EducationPage = {$: 'EducationPage'};
+var $author$project$Router$Routes$GroupProjectsPage = {$: 'GroupProjectsPage'};
+var $author$project$Router$Routes$HackathonsPage = {$: 'HackathonsPage'};
 var $author$project$Router$Routes$Home = {$: 'Home'};
+var $author$project$Router$Routes$PersonalProjectsPage = {$: 'PersonalProjectsPage'};
 var $author$project$Router$Routes$TechnicalSkillsPage = {$: 'TechnicalSkillsPage'};
 var $author$project$Router$Routes$WorkExperiencePage = {$: 'WorkExperiencePage'};
 var $elm$url$Url$Parser$Parser = function (a) {
@@ -6017,7 +6049,23 @@ var $author$project$Router$Routes$routes = $elm$url$Url$Parser$oneOf(
 			A2(
 			$elm$url$Url$Parser$map,
 			$author$project$Router$Routes$TechnicalSkillsPage,
-			$elm$url$Url$Parser$s('technicalskills'))
+			$elm$url$Url$Parser$s('technicalskills')),
+			A2(
+			$elm$url$Url$Parser$map,
+			$author$project$Router$Routes$PersonalProjectsPage,
+			$elm$url$Url$Parser$s('personalprojects')),
+			A2(
+			$elm$url$Url$Parser$map,
+			$author$project$Router$Routes$GroupProjectsPage,
+			$elm$url$Url$Parser$s('groupprojects')),
+			A2(
+			$elm$url$Url$Parser$map,
+			$author$project$Router$Routes$EducationPage,
+			$elm$url$Url$Parser$s('education')),
+			A2(
+			$elm$url$Url$Parser$map,
+			$author$project$Router$Routes$HackathonsPage,
+			$elm$url$Url$Parser$s('hackathons'))
 		]));
 var $elm$core$Maybe$withDefault = F2(
 	function (_default, maybe) {
@@ -6056,20 +6104,88 @@ var $author$project$Update$init = F3(
 	function (_v0, url, key) {
 		return A3(
 			$author$project$Update$andMapCmd,
-			$author$project$Types$MsgForTechnicalSkills,
-			$author$project$TechnicalSkills$Update$init,
+			$author$project$Types$MsgForHackathons,
+			$author$project$Hackathons$Update$init,
 			A3(
 				$author$project$Update$andMapCmd,
-				$author$project$Types$MsgForWorkExperience,
-				$author$project$WorkExperience$Update$init,
+				$author$project$Types$MsgForEducation,
+				$author$project$Education$Update$init,
 				A3(
 					$author$project$Update$andMapCmd,
-					$author$project$Types$MsgForRouter,
-					A2($author$project$Router$Update$init, url, key),
-					$Fresheyeball$elm_return$Return$singleton($author$project$Types$Model))));
+					$author$project$Types$MsgForGroupProjects,
+					$author$project$GroupProjects$Update$init,
+					A3(
+						$author$project$Update$andMapCmd,
+						$author$project$Types$MsgForPersonalProjects,
+						$author$project$PersonalProjects$Update$init,
+						A3(
+							$author$project$Update$andMapCmd,
+							$author$project$Types$MsgForTechnicalSkills,
+							$author$project$TechnicalSkills$Update$init,
+							A3(
+								$author$project$Update$andMapCmd,
+								$author$project$Types$MsgForWorkExperience,
+								$author$project$WorkExperience$Update$init,
+								A3(
+									$author$project$Update$andMapCmd,
+									$author$project$Types$MsgForRouter,
+									A2($author$project$Router$Update$init, url, key),
+									$Fresheyeball$elm_return$Return$singleton($author$project$Types$Model))))))));
 	});
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
+var $author$project$Education$Update$updateEducation = F2(
+	function (msg, model) {
+		return A2($Fresheyeball$elm_return$Return$return, model, $elm$core$Platform$Cmd$none);
+	});
+var $author$project$Education$Update$update = F2(
+	function (msgFor, model) {
+		if (msgFor.$ === 'MsgForEducation') {
+			var msg = msgFor.a;
+			return A2($author$project$Education$Update$updateEducation, msg, model);
+		} else {
+			return A2($Fresheyeball$elm_return$Return$return, model, $elm$core$Platform$Cmd$none);
+		}
+	});
+var $author$project$GroupProjects$Update$updateGroupProjects = F2(
+	function (msg, model) {
+		return A2($Fresheyeball$elm_return$Return$return, model, $elm$core$Platform$Cmd$none);
+	});
+var $author$project$GroupProjects$Update$update = F2(
+	function (msgFor, model) {
+		if (msgFor.$ === 'MsgForGroupProjects') {
+			var msg = msgFor.a;
+			return A2($author$project$GroupProjects$Update$updateGroupProjects, msg, model);
+		} else {
+			return A2($Fresheyeball$elm_return$Return$return, model, $elm$core$Platform$Cmd$none);
+		}
+	});
+var $author$project$Hackathons$Update$updateHackathons = F2(
+	function (msg, model) {
+		return A2($Fresheyeball$elm_return$Return$return, model, $elm$core$Platform$Cmd$none);
+	});
+var $author$project$Hackathons$Update$update = F2(
+	function (msgFor, model) {
+		if (msgFor.$ === 'MsgForHackathons') {
+			var msg = msgFor.a;
+			return A2($author$project$Hackathons$Update$updateHackathons, msg, model);
+		} else {
+			return A2($Fresheyeball$elm_return$Return$return, model, $elm$core$Platform$Cmd$none);
+		}
+	});
+var $author$project$PersonalProjects$Update$updatePersonalProjects = F2(
+	function (msg, model) {
+		return A2($Fresheyeball$elm_return$Return$return, model, $elm$core$Platform$Cmd$none);
+	});
+var $author$project$PersonalProjects$Update$update = F2(
+	function (msgFor, model) {
+		if (msgFor.$ === 'MsgForPersonalProjects') {
+			var msg = msgFor.a;
+			return A2($author$project$PersonalProjects$Update$updatePersonalProjects, msg, model);
+		} else {
+			return A2($Fresheyeball$elm_return$Return$return, model, $elm$core$Platform$Cmd$none);
+		}
+	});
 var $elm$browser$Browser$Navigation$load = _Browser_load;
 var $elm$browser$Browser$Navigation$pushUrl = _Browser_pushUrl;
 var $author$project$Router$Routes$toPath = function (page) {
@@ -6080,8 +6196,16 @@ var $author$project$Router$Routes$toPath = function (page) {
 			return '/404';
 		case 'WorkExperiencePage':
 			return '/workexperience';
-		default:
+		case 'TechnicalSkillsPage':
 			return '/technicalskills';
+		case 'PersonalProjectsPage':
+			return '/personalprojects';
+		case 'GroupProjectsPage':
+			return '/groupprojects';
+		case 'EducationPage':
+			return '/education';
+		default:
+			return '/hackathons';
 	}
 };
 var $elm$url$Url$addPort = F2(
@@ -6210,17 +6334,33 @@ var $author$project$Update$update = F2(
 	function (msg, model) {
 		return A3(
 			$author$project$Update$andMapCmd,
-			$author$project$Types$MsgForTechnicalSkills,
-			A2($author$project$TechnicalSkills$Update$update, msg, model.technicalskills),
+			$author$project$Types$MsgForHackathons,
+			A2($author$project$Hackathons$Update$update, msg, model.hackathons),
 			A3(
 				$author$project$Update$andMapCmd,
-				$author$project$Types$MsgForWorkExperience,
-				A2($author$project$WorkExperience$Update$update, msg, model.workexperience),
+				$author$project$Types$MsgForEducation,
+				A2($author$project$Education$Update$update, msg, model.education),
 				A3(
 					$author$project$Update$andMapCmd,
-					$author$project$Types$MsgForRouter,
-					A2($author$project$Router$Update$update, msg, model.router),
-					$Fresheyeball$elm_return$Return$singleton($author$project$Types$Model))));
+					$author$project$Types$MsgForGroupProjects,
+					A2($author$project$GroupProjects$Update$update, msg, model.groupprojects),
+					A3(
+						$author$project$Update$andMapCmd,
+						$author$project$Types$MsgForPersonalProjects,
+						A2($author$project$PersonalProjects$Update$update, msg, model.personalprojects),
+						A3(
+							$author$project$Update$andMapCmd,
+							$author$project$Types$MsgForTechnicalSkills,
+							A2($author$project$TechnicalSkills$Update$update, msg, model.technicalskills),
+							A3(
+								$author$project$Update$andMapCmd,
+								$author$project$Types$MsgForWorkExperience,
+								A2($author$project$WorkExperience$Update$update, msg, model.workexperience),
+								A3(
+									$author$project$Update$andMapCmd,
+									$author$project$Types$MsgForRouter,
+									A2($author$project$Router$Update$update, msg, model.router),
+									$Fresheyeball$elm_return$Return$singleton($author$project$Types$Model))))))));
 	});
 var $mdgriffith$elm_ui$Internal$Model$AlignX = function (a) {
 	return {$: 'AlignX', a: a};
@@ -11741,6 +11881,14 @@ var $mdgriffith$elm_ui$Element$layoutWith = F3(
 	});
 var $mdgriffith$elm_ui$Element$layout = $mdgriffith$elm_ui$Element$layoutWith(
 	{options: _List_Nil});
+var $mdgriffith$elm_ui$Internal$Model$Left = {$: 'Left'};
+var $mdgriffith$elm_ui$Element$alignLeft = $mdgriffith$elm_ui$Internal$Model$AlignX($mdgriffith$elm_ui$Internal$Model$Left);
+var $mdgriffith$elm_ui$Internal$Model$Class = F2(
+	function (a, b) {
+		return {$: 'Class', a: a, b: b};
+	});
+var $mdgriffith$elm_ui$Internal$Flag$fontAlignment = $mdgriffith$elm_ui$Internal$Flag$flag(12);
+var $mdgriffith$elm_ui$Element$Font$alignLeft = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontAlignment, $mdgriffith$elm_ui$Internal$Style$classes.textLeft);
 var $mdgriffith$elm_ui$Internal$Model$AsColumn = {$: 'AsColumn'};
 var $mdgriffith$elm_ui$Internal$Model$asColumn = $mdgriffith$elm_ui$Internal$Model$AsColumn;
 var $mdgriffith$elm_ui$Element$column = F2(
@@ -11758,6 +11906,47 @@ var $mdgriffith$elm_ui$Element$column = F2(
 					A2(
 						$elm$core$List$cons,
 						$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$shrink),
+						attrs))),
+			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
+	});
+var $mdgriffith$elm_ui$Internal$Model$Describe = function (a) {
+	return {$: 'Describe', a: a};
+};
+var $mdgriffith$elm_ui$Internal$Model$Paragraph = {$: 'Paragraph'};
+var $mdgriffith$elm_ui$Internal$Model$SpacingStyle = F3(
+	function (a, b, c) {
+		return {$: 'SpacingStyle', a: a, b: b, c: c};
+	});
+var $mdgriffith$elm_ui$Internal$Flag$spacing = $mdgriffith$elm_ui$Internal$Flag$flag(3);
+var $mdgriffith$elm_ui$Internal$Model$spacingName = F2(
+	function (x, y) {
+		return 'spacing-' + ($elm$core$String$fromInt(x) + ('-' + $elm$core$String$fromInt(y)));
+	});
+var $mdgriffith$elm_ui$Element$spacing = function (x) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$spacing,
+		A3(
+			$mdgriffith$elm_ui$Internal$Model$SpacingStyle,
+			A2($mdgriffith$elm_ui$Internal$Model$spacingName, x, x),
+			x,
+			x));
+};
+var $mdgriffith$elm_ui$Element$paragraph = F2(
+	function (attrs, children) {
+		return A4(
+			$mdgriffith$elm_ui$Internal$Model$element,
+			$mdgriffith$elm_ui$Internal$Model$asParagraph,
+			$mdgriffith$elm_ui$Internal$Model$div,
+			A2(
+				$elm$core$List$cons,
+				$mdgriffith$elm_ui$Internal$Model$Describe($mdgriffith$elm_ui$Internal$Model$Paragraph),
+				A2(
+					$elm$core$List$cons,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+					A2(
+						$elm$core$List$cons,
+						$mdgriffith$elm_ui$Element$spacing(5),
 						attrs))),
 			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
 	});
@@ -11781,25 +11970,23 @@ var $mdgriffith$elm_ui$Element$row = F2(
 						attrs))),
 			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
 	});
-var $mdgriffith$elm_ui$Internal$Model$SpacingStyle = F3(
-	function (a, b, c) {
-		return {$: 'SpacingStyle', a: a, b: b, c: c};
-	});
-var $mdgriffith$elm_ui$Internal$Flag$spacing = $mdgriffith$elm_ui$Internal$Flag$flag(3);
-var $mdgriffith$elm_ui$Internal$Model$spacingName = F2(
-	function (x, y) {
-		return 'spacing-' + ($elm$core$String$fromInt(x) + ('-' + $elm$core$String$fromInt(y)));
-	});
-var $mdgriffith$elm_ui$Element$spacing = function (x) {
+var $mdgriffith$elm_ui$Element$Font$size = function (i) {
 	return A2(
 		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$spacing,
-		A3(
-			$mdgriffith$elm_ui$Internal$Model$SpacingStyle,
-			A2($mdgriffith$elm_ui$Internal$Model$spacingName, x, x),
-			x,
-			x));
+		$mdgriffith$elm_ui$Internal$Flag$fontSize,
+		$mdgriffith$elm_ui$Internal$Model$FontSize(i));
 };
+var $mdgriffith$elm_ui$Element$spacingXY = F2(
+	function (x, y) {
+		return A2(
+			$mdgriffith$elm_ui$Internal$Model$StyleClass,
+			$mdgriffith$elm_ui$Internal$Flag$spacing,
+			A3(
+				$mdgriffith$elm_ui$Internal$Model$SpacingStyle,
+				A2($mdgriffith$elm_ui$Internal$Model$spacingName, x, y),
+				x,
+				y));
+	});
 var $mdgriffith$elm_ui$Internal$Model$Text = function (a) {
 	return {$: 'Text', a: a};
 };
@@ -11811,20 +11998,102 @@ var $author$project$View$content = A2(
 	_List_fromArray(
 		[
 			$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-			$mdgriffith$elm_ui$Element$spacing(20)
+			A2($mdgriffith$elm_ui$Element$spacingXY, 0, 40)
 		]),
 	_List_fromArray(
 		[
 			A2(
 			$mdgriffith$elm_ui$Element$row,
-			_List_Nil,
 			_List_fromArray(
 				[
-					$mdgriffith$elm_ui$Element$text('Taqdeer')
+					$mdgriffith$elm_ui$Element$alignLeft,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(40),
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$paragraph,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									$mdgriffith$elm_ui$Element$Font$alignLeft,
+									$mdgriffith$elm_ui$Element$Font$size(20)
+								]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text(' Independent Imaginative Intelligent ')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$paragraph,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									$mdgriffith$elm_ui$Element$Font$alignLeft,
+									$mdgriffith$elm_ui$Element$Font$size(15)
+								]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('I am an eager learner and self-motivated person who knows no restrictions when it comes to achieving desired goals.')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$paragraph,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									$mdgriffith$elm_ui$Element$Font$alignLeft,
+									$mdgriffith$elm_ui$Element$Font$size(15)
+								]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('I am passionate about computer science and believe that it can be used to not only have a better lifestyle but also a better ecosystem. ')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$column,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									A2($mdgriffith$elm_ui$Element$spacingXY, 0, 10)
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('1) I am working on this project where a user will be able to gain points upon planting a tree')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('2) I am also working on another social media platform to promote linguistic skills. Here, users will be able to post poems, shayari, short stories, etc.')
+										]))
+								]))
+						]))
 				]))
 		]));
-var $mdgriffith$elm_ui$Internal$Model$Right = {$: 'Right'};
-var $mdgriffith$elm_ui$Element$alignRight = $mdgriffith$elm_ui$Internal$Model$AlignX($mdgriffith$elm_ui$Internal$Model$Right);
 var $mdgriffith$elm_ui$Internal$Model$Top = {$: 'Top'};
 var $mdgriffith$elm_ui$Element$alignTop = $mdgriffith$elm_ui$Internal$Model$AlignY($mdgriffith$elm_ui$Internal$Model$Top);
 var $mdgriffith$elm_ui$Element$Background$color = function (clr) {
@@ -11909,13 +12178,6 @@ var $mdgriffith$elm_ui$Internal$Model$PseudoSelector = F2(
 		return {$: 'PseudoSelector', a: a, b: b};
 	});
 var $mdgriffith$elm_ui$Internal$Flag$hover = $mdgriffith$elm_ui$Internal$Flag$flag(33);
-var $mdgriffith$elm_ui$Internal$Model$Class = F2(
-	function (a, b) {
-		return {$: 'Class', a: a, b: b};
-	});
-var $mdgriffith$elm_ui$Internal$Model$Describe = function (a) {
-	return {$: 'Describe', a: a};
-};
 var $mdgriffith$elm_ui$Internal$Model$Nearby = F2(
 	function (a, b) {
 		return {$: 'Nearby', a: a, b: b};
@@ -12095,6 +12357,30 @@ var $mdgriffith$elm_ui$Element$paddingEach = function (_v0) {
 			bottom,
 			left));
 };
+var $mdgriffith$elm_ui$Element$paddingXY = F2(
+	function (x, y) {
+		return _Utils_eq(x, y) ? A2(
+			$mdgriffith$elm_ui$Internal$Model$StyleClass,
+			$mdgriffith$elm_ui$Internal$Flag$padding,
+			A5(
+				$mdgriffith$elm_ui$Internal$Model$PaddingStyle,
+				'p-' + $elm$core$String$fromInt(x),
+				x,
+				x,
+				x,
+				x)) : A2(
+			$mdgriffith$elm_ui$Internal$Model$StyleClass,
+			$mdgriffith$elm_ui$Internal$Flag$padding,
+			A5(
+				$mdgriffith$elm_ui$Internal$Model$PaddingStyle,
+				'p-' + ($elm$core$String$fromInt(x) + ('-' + $elm$core$String$fromInt(y))),
+				y,
+				x,
+				y,
+				x));
+	});
+var $mdgriffith$elm_ui$Internal$Flag$overflow = $mdgriffith$elm_ui$Internal$Flag$flag(20);
+var $mdgriffith$elm_ui$Element$scrollbarY = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$overflow, $mdgriffith$elm_ui$Internal$Style$classes.scrollbarsY);
 var $mdgriffith$elm_ui$Internal$Model$boxShadowName = function (shadow) {
 	return $elm$core$String$concat(
 		_List_fromArray(
@@ -12119,23 +12405,6 @@ var $mdgriffith$elm_ui$Element$Border$shadow = function (almostShade) {
 			'box-shadow',
 			$mdgriffith$elm_ui$Internal$Model$formatBoxShadow(shade)));
 };
-var $mdgriffith$elm_ui$Element$Font$size = function (i) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$fontSize,
-		$mdgriffith$elm_ui$Internal$Model$FontSize(i));
-};
-var $mdgriffith$elm_ui$Element$spacingXY = F2(
-	function (x, y) {
-		return A2(
-			$mdgriffith$elm_ui$Internal$Model$StyleClass,
-			$mdgriffith$elm_ui$Internal$Flag$spacing,
-			A3(
-				$mdgriffith$elm_ui$Internal$Model$SpacingStyle,
-				A2($mdgriffith$elm_ui$Internal$Model$spacingName, x, y),
-				x,
-				y));
-	});
 var $mdgriffith$elm_ui$Internal$Model$BorderWidth = F5(
 	function (a, b, c, d, e) {
 		return {$: 'BorderWidth', a: a, b: b, c: c, d: d, e: e};
@@ -12204,6 +12473,8 @@ var $author$project$Layout$layout = F2(
 							$mdgriffith$elm_ui$Element$centerY,
 							$mdgriffith$elm_ui$Element$Background$color($author$project$Styles$colors.blue),
 							$mdgriffith$elm_ui$Element$Font$color($author$project$Styles$colors.white),
+							$mdgriffith$elm_ui$Element$paddingEach(
+							{bottom: 20, left: 50, right: 50, top: 7}),
 							$mdgriffith$elm_ui$Element$Border$shadow(
 							{
 								blur: 5,
@@ -12219,12 +12490,18 @@ var $author$project$Layout$layout = F2(
 							_List_fromArray(
 								[
 									$mdgriffith$elm_ui$Element$centerX,
-									$mdgriffith$elm_ui$Element$Font$size(50),
+									$mdgriffith$elm_ui$Element$Font$size(35),
 									$mdgriffith$elm_ui$Element$padding(50)
 								]),
 							_List_fromArray(
 								[
-									$mdgriffith$elm_ui$Element$text('Taqdeer Grewal')
+									A2(
+									$mdgriffith$elm_ui$Element$link,
+									_List_Nil,
+									{
+										label: $mdgriffith$elm_ui$Element$text('Taqdeer Grewal'),
+										url: $author$project$Router$Routes$toPath($author$project$Router$Routes$Home)
+									})
 								])),
 							A2(
 							$mdgriffith$elm_ui$Element$row,
@@ -12313,7 +12590,7 @@ var $author$project$Layout$layout = F2(
 													_List_Nil,
 													{
 														label: $mdgriffith$elm_ui$Element$text('Personal Projects'),
-														url: $author$project$Router$Routes$toPath($author$project$Router$Routes$WorkExperiencePage)
+														url: $author$project$Router$Routes$toPath($author$project$Router$Routes$PersonalProjectsPage)
 													})
 												])),
 											A2(
@@ -12336,7 +12613,7 @@ var $author$project$Layout$layout = F2(
 													_List_Nil,
 													{
 														label: $mdgriffith$elm_ui$Element$text('Group Projects'),
-														url: $author$project$Router$Routes$toPath($author$project$Router$Routes$WorkExperiencePage)
+														url: $author$project$Router$Routes$toPath($author$project$Router$Routes$GroupProjectsPage)
 													})
 												])),
 											A2(
@@ -12359,7 +12636,7 @@ var $author$project$Layout$layout = F2(
 													_List_Nil,
 													{
 														label: $mdgriffith$elm_ui$Element$text('Education'),
-														url: $author$project$Router$Routes$toPath($author$project$Router$Routes$WorkExperiencePage)
+														url: $author$project$Router$Routes$toPath($author$project$Router$Routes$EducationPage)
 													})
 												])),
 											A2(
@@ -12382,7 +12659,7 @@ var $author$project$Layout$layout = F2(
 													_List_Nil,
 													{
 														label: $mdgriffith$elm_ui$Element$text('Hackathons'),
-														url: $author$project$Router$Routes$toPath($author$project$Router$Routes$WorkExperiencePage)
+														url: $author$project$Router$Routes$toPath($author$project$Router$Routes$HackathonsPage)
 													})
 												]))
 										]))
@@ -12422,7 +12699,7 @@ var $author$project$Layout$layout = F2(
 									A2(
 									$mdgriffith$elm_ui$Element$row,
 									_List_fromArray(
-										[$mdgriffith$elm_ui$Element$alignRight]),
+										[$mdgriffith$elm_ui$Element$alignLeft]),
 									_List_fromArray(
 										[
 											$mdgriffith$elm_ui$Element$text(pageName)
@@ -12431,50 +12708,706 @@ var $author$project$Layout$layout = F2(
 							A2(
 							$mdgriffith$elm_ui$Element$row,
 							_List_fromArray(
-								[$mdgriffith$elm_ui$Element$centerX, $mdgriffith$elm_ui$Element$centerY]),
+								[$mdgriffith$elm_ui$Element$centerY, $mdgriffith$elm_ui$Element$alignLeft, $mdgriffith$elm_ui$Element$scrollbarY]),
 							_List_fromArray(
-								[content]))
+								[
+									A2(
+									$mdgriffith$elm_ui$Element$column,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$height(
+											A2($mdgriffith$elm_ui$Element$maximum, 550, $mdgriffith$elm_ui$Element$fill)),
+											$mdgriffith$elm_ui$Element$scrollbarY,
+											A2($mdgriffith$elm_ui$Element$paddingXY, 50, 10)
+										]),
+									_List_fromArray(
+										[content]))
+								]))
 						]))
 				]));
 	});
-var $author$project$View$homePageView = A2($author$project$Layout$layout, 'Taqdeer Grewal', $author$project$View$content);
+var $author$project$View$homePageView = A2($author$project$Layout$layout, 'About Myself', $author$project$View$content);
 var $mdgriffith$elm_ui$Element$map = $mdgriffith$elm_ui$Internal$Model$map;
-var $author$project$TechnicalSkills$View$content = A2(
+var $mdgriffith$elm_ui$Internal$Flag$fontWeight = $mdgriffith$elm_ui$Internal$Flag$flag(13);
+var $mdgriffith$elm_ui$Element$Font$bold = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontWeight, $mdgriffith$elm_ui$Internal$Style$classes.bold);
+var $author$project$Education$View$content = A2(
 	$mdgriffith$elm_ui$Element$column,
 	_List_fromArray(
 		[
 			$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-			$mdgriffith$elm_ui$Element$spacing(20)
+			A2($mdgriffith$elm_ui$Element$spacingXY, 0, 40)
 		]),
 	_List_fromArray(
 		[
 			A2(
 			$mdgriffith$elm_ui$Element$row,
-			_List_Nil,
 			_List_fromArray(
 				[
-					$mdgriffith$elm_ui$Element$text('C++')
+					$mdgriffith$elm_ui$Element$alignLeft,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(10),
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Bachelor of Science : Computer Science')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('University of British Columbia')
+								]))
+						]))
 				])),
 			A2(
 			$mdgriffith$elm_ui$Element$row,
-			_List_Nil,
 			_List_fromArray(
 				[
-					$mdgriffith$elm_ui$Element$text('Python')
+					$mdgriffith$elm_ui$Element$alignLeft,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(10),
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Associate Degree : Computer Science')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Langara College')
+								]))
+						]))
 				])),
 			A2(
 			$mdgriffith$elm_ui$Element$row,
-			_List_Nil,
 			_List_fromArray(
 				[
-					$mdgriffith$elm_ui$Element$text('JavaScript')
+					$mdgriffith$elm_ui$Element$alignLeft,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(10),
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Relevant Courses')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$column,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$alignLeft,
+									$mdgriffith$elm_ui$Element$Font$size(15)
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('Computations, Program and Programming, Models of Computation, Software Construction, Introduction to Computer Systems, Basic Algorithms and Data structures, Introduction to Relational Databases, Object Oriented Computing')
+										]))
+								]))
+						]))
+				]))
+		]));
+var $author$project$Education$View$view = function (model) {
+	return A2($author$project$Layout$layout, 'Education', $author$project$Education$View$content);
+};
+var $author$project$GroupProjects$View$content = A2(
+	$mdgriffith$elm_ui$Element$column,
+	_List_fromArray(
+		[
+			$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+			A2($mdgriffith$elm_ui$Element$spacingXY, 0, 40)
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$mdgriffith$elm_ui$Element$row,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$alignLeft,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(10),
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('RateMyPolitician')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('SQL, JS, HTML5, CSS3')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$column,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$alignLeft,
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									A2($mdgriffith$elm_ui$Element$spacingXY, 0, 20)
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('The project is a website designed for Canadians to rate various Canadian politicians which will be helpful for them to make the right decision while voting.')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('My major contribution in the project is implementing four different pages and adding Bootstrap designs of CSS. Thus, I have worked with both front-end and back-end software of the project.')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('This is a course-based group project and has been implemented to demonstrate the skills of SQL. The frontend has been designed in JavaScript, HTML5, CSS and backend uses NodeJS, Express, SQL and Oracle. GitHub was used for version control and collaboration. ')
+										]))
+								]))
+						]))
 				])),
 			A2(
 			$mdgriffith$elm_ui$Element$row,
-			_List_Nil,
 			_List_fromArray(
 				[
-					$mdgriffith$elm_ui$Element$text('Java')
+					$mdgriffith$elm_ui$Element$alignLeft,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(10),
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('RateMyCourse')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('HTML5, CSS3')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$column,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$alignLeft,
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									A2($mdgriffith$elm_ui$Element$spacingXY, 0, 20)
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('The project is an inspiration from RateMyProfessor website. Instead of rating a professor, it allows user to rate the courses at different colleges or universities. ')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('User can provide rating from 1-5 based on how easy or how hard it was to pass the course. User can also provide personal comments like what new material they learnt from the course and with whom they took it with. ')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('My major contribution is the project’s frontend which has been implemented in HTML5 with Bootstrap framework of CSS. ')
+										]))
+								]))
+						]))
+				]))
+		]));
+var $author$project$GroupProjects$View$view = function (model) {
+	return A2($author$project$Layout$layout, 'Group Projects', $author$project$GroupProjects$View$content);
+};
+var $author$project$Hackathons$View$content = A2(
+	$mdgriffith$elm_ui$Element$column,
+	_List_fromArray(
+		[
+			$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+			A2($mdgriffith$elm_ui$Element$spacingXY, 0, 40)
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$mdgriffith$elm_ui$Element$row,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$alignLeft,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(20),
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('LumoHacks')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Major League Hacking (SFU)')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$column,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									$mdgriffith$elm_ui$Element$Font$size(15),
+									A2($mdgriffith$elm_ui$Element$spacingXY, 0, 20)
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('Participated in two hackathons under Major League Hacking at SFU campus in a team. ')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('Won Wolfram Alpha Award in one of the hackathons for implementing a project. The project’s motive is to pay tribute to the retired policemen and soldiers to improve their mental health. ')
+										]))
+								]))
+						]))
+				]))
+		]));
+var $author$project$Hackathons$View$view = function (model) {
+	return A2($author$project$Layout$layout, 'Hackathons', $author$project$Hackathons$View$content);
+};
+var $author$project$PersonalProjects$View$content = A2(
+	$mdgriffith$elm_ui$Element$column,
+	_List_fromArray(
+		[
+			$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+			A2($mdgriffith$elm_ui$Element$spacingXY, 0, 40)
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$mdgriffith$elm_ui$Element$row,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$alignLeft,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(10),
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Farmers\' Market')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Python, jQuery, React, C, NodeJS, Assembly')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$column,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$alignLeft,
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									A2($mdgriffith$elm_ui$Element$spacingXY, 0, 20)
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('The project is an interface for farmers’ and MNCs to establish fair deals of buying/selling crops without the involvement of third parties.')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('The project supports two types of accounts – a famer’s account to list all the crops he wants to sell and a MNC account in which the user can find the type of crops one wants to buy. MNC user can select the farmer from the list of farmers who are selling the specified crop and get their contact info. ')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('Designed in Java, project also supports saving and restoring the data on local machine in JSON format. UML (Unified modeling language) and Object-Oriented principles have been used while implementation. ')
+										]))
+								]))
+						]))
+				])),
+			A2(
+			$mdgriffith$elm_ui$Element$row,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$alignLeft,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(10),
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Score')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('SQL, MongoDB, Oracle')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$column,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$alignLeft,
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									A2($mdgriffith$elm_ui$Element$spacingXY, 0, 20)
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('Designed for one player, project is an interactive game which can run on any search engine. It has been inspired from the classic game named Dangerous Dave')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('The game has been written in plain JavaScript using objects and functions. It uses event driven functionality of JavaScript and has been embedded in HTML5')
+										]))
+								]))
+						]))
+				]))
+		]));
+var $author$project$PersonalProjects$View$view = function (model) {
+	return A2($author$project$Layout$layout, 'Personal Projects', $author$project$PersonalProjects$View$content);
+};
+var $author$project$TechnicalSkills$View$content = A2(
+	$mdgriffith$elm_ui$Element$column,
+	_List_fromArray(
+		[
+			$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+			A2($mdgriffith$elm_ui$Element$spacingXY, 0, 40)
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$mdgriffith$elm_ui$Element$row,
+			_List_fromArray(
+				[$mdgriffith$elm_ui$Element$alignLeft]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(10)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Full Proficiency in languages')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('C++, JavaScript, Java, Elm, F#, HTML5, CSS3')
+								]))
+						]))
+				])),
+			A2(
+			$mdgriffith$elm_ui$Element$row,
+			_List_fromArray(
+				[$mdgriffith$elm_ui$Element$alignLeft]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(10)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Working knoweledge')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Python, jQuery, React, C, NodeJS, Assembly')
+								]))
+						]))
+				])),
+			A2(
+			$mdgriffith$elm_ui$Element$row,
+			_List_fromArray(
+				[$mdgriffith$elm_ui$Element$alignLeft]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(10)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Databases')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('SQL, MongoDB, Oracle')
+								]))
+						]))
 				]))
 		]));
 var $author$project$TechnicalSkills$View$view = function (model) {
@@ -12485,23 +13418,223 @@ var $author$project$WorkExperience$View$content = A2(
 	_List_fromArray(
 		[
 			$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-			$mdgriffith$elm_ui$Element$spacing(20)
+			A2($mdgriffith$elm_ui$Element$spacingXY, 0, 50)
 		]),
 	_List_fromArray(
 		[
 			A2(
 			$mdgriffith$elm_ui$Element$row,
-			_List_Nil,
 			_List_fromArray(
 				[
-					$mdgriffith$elm_ui$Element$text('Flint')
+					$mdgriffith$elm_ui$Element$alignLeft,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(10),
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Flint')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$alignLeft,
+									$mdgriffith$elm_ui$Element$Font$size(16)
+								]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Sept 2021 - Present')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Full Stack Software Developer')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$column,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$alignLeft,
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									A2($mdgriffith$elm_ui$Element$spacingXY, 0, 20)
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text(' Developed the front end, client facing website https://www.withflint.com using Elm which resulted in the promotion of Flint\'s face in a creative manner.')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text(' Developed backend in F# to route applications of new candidates directly to the concerned supervisor using SMTP services of Google. Hence simplifying the shortlisting procedure. ')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text(' Created and implemented an order\'s page for the Flint team in order for them to be able to place business related orders internally which substantially increased the efficiency quotient. ')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text(' One of the biggest challenges and learning curve which I passed was that I learnt Functional programming within a span of three weeks which in turn got identified as an imperative asset by the software team at Flint. ')
+										]))
+								]))
+						]))
 				])),
 			A2(
 			$mdgriffith$elm_ui$Element$row,
-			_List_Nil,
 			_List_fromArray(
 				[
-					$mdgriffith$elm_ui$Element$text('Langara College')
+					$mdgriffith$elm_ui$Element$alignLeft,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$alignLeft,
+							$mdgriffith$elm_ui$Element$spacing(10),
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Langara College')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$alignLeft,
+									$mdgriffith$elm_ui$Element$Font$size(16)
+								]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Jan 2016 - Aug 2021')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[$mdgriffith$elm_ui$Element$alignLeft]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text('Teaching Assistant')
+								])),
+							A2(
+							$mdgriffith$elm_ui$Element$column,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$alignLeft,
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									A2($mdgriffith$elm_ui$Element$spacingXY, 0, 20)
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('Marked labs by testing code and give specific and detailed feedbacks to students about their mistakes which improve their programming skills significantly. ')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('Tutored students in small groups as well as individually which boosts up their confidence and knowledge and improve their team-work skills. ')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('Conducted live question-answer sessions with students to detect plagiarism and understand their knowledge of the concepts')
+										])),
+									A2(
+									$mdgriffith$elm_ui$Element$paragraph,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+											$mdgriffith$elm_ui$Element$Font$alignLeft,
+											$mdgriffith$elm_ui$Element$Font$size(15)
+										]),
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$text('Read 50 assignments with at least 50 lines of code per week which has improved my code debugging skills substantially')
+										]))
+								]))
+						]))
 				]))
 		]));
 var $author$project$WorkExperience$View$view = function (model) {
@@ -12519,15 +13652,33 @@ var $author$project$View$renderRoute = function (model) {
 				$mdgriffith$elm_ui$Element$map,
 				$author$project$Types$MsgForWorkExperience,
 				$author$project$WorkExperience$View$view(model.workexperience));
-		default:
+		case 'TechnicalSkillsPage':
 			return A2(
 				$mdgriffith$elm_ui$Element$map,
 				$author$project$Types$MsgForTechnicalSkills,
 				$author$project$TechnicalSkills$View$view(model.technicalskills));
+		case 'PersonalProjectsPage':
+			return A2(
+				$mdgriffith$elm_ui$Element$map,
+				$author$project$Types$MsgForPersonalProjects,
+				$author$project$PersonalProjects$View$view(model.personalprojects));
+		case 'GroupProjectsPage':
+			return A2(
+				$mdgriffith$elm_ui$Element$map,
+				$author$project$Types$MsgForGroupProjects,
+				$author$project$GroupProjects$View$view(model.groupprojects));
+		case 'EducationPage':
+			return A2(
+				$mdgriffith$elm_ui$Element$map,
+				$author$project$Types$MsgForEducation,
+				$author$project$Education$View$view(model.education));
+		default:
+			return A2(
+				$mdgriffith$elm_ui$Element$map,
+				$author$project$Types$MsgForHackathons,
+				$author$project$Hackathons$View$view(model.hackathons));
 	}
 };
-var $mdgriffith$elm_ui$Internal$Flag$overflow = $mdgriffith$elm_ui$Internal$Flag$flag(20);
-var $mdgriffith$elm_ui$Element$scrollbarY = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$overflow, $mdgriffith$elm_ui$Internal$Style$classes.scrollbarsY);
 var $author$project$View$view = function (model) {
 	return {
 		body: _List_fromArray(
