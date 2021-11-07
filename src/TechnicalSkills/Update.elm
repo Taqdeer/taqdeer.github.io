@@ -1,7 +1,7 @@
 module TechnicalSkills.Update exposing (..)
 
-import TechnicalSkills.Types exposing (..)
 import Return exposing (Return, return)
+import TechnicalSkills.Types exposing (..)
 import Types
 
 

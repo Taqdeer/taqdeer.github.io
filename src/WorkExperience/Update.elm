@@ -1,8 +1,8 @@
 module WorkExperience.Update exposing (..)
 
-import WorkExperience.Types exposing (..)
 import Return exposing (Return, return)
 import Types
+import WorkExperience.Types exposing (..)
 
 
 init : Return Msg Model

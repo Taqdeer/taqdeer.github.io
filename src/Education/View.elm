@@ -29,7 +29,7 @@ content =
         , row [ alignLeft, width fill ]
             [ column [ alignLeft, spacing 10, width fill ]
                 [ row [ Font.bold, alignLeft ] [ text "Relevant Courses" ]
-                , column [ alignLeft, Font.size 15 ] [ paragraph [width fill, Font.alignLeft] [text "Computations, Program and Programming, Models of Computation, Software Construction, Introduction to Computer Systems, Basic Algorithms and Data structures, Introduction to Relational Databases, Object Oriented Computing"] ]
+                , column [ alignLeft, Font.size 15 ] [ paragraph [ width fill, Font.alignLeft ] [ text "Computations, Program and Programming, Models of Computation, Software Construction, Introduction to Computer Systems, Basic Algorithms and Data structures, Introduction to Relational Databases, Object Oriented Computing" ] ]
                 ]
             ]
         ]
