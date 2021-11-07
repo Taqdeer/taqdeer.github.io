@@ -10,5 +10,5 @@ copy:
 		@cat index.html > groupprojects/index.html
 		@cat index.html > hackathons/index.html
 		@cat index.html > personalprojects/index.html
-		@cat index.html > technicalskills/index.html
+		@cat index.html > skills/index.html
 		@cat index.html > workexperience/index.html

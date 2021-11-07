@@ -21,7 +21,7 @@ routes =
         [ map Home top
         , map NotFound (s "404")
         , map WorkExperiencePage (s "workexperience")
-        , map TechnicalSkillsPage (s "technicalskills")
+        , map TechnicalSkillsPage (s "skills")
         , map PersonalProjectsPage (s "personalprojects")
         , map GroupProjectsPage (s "groupprojects")
         , map EducationPage (s "education")
@@ -42,7 +42,7 @@ toPath page =
             "/workexperience"
 
         TechnicalSkillsPage ->
-            "/technicalskills"
+            "/skills"
 
         PersonalProjectsPage ->
             "/personalprojects"

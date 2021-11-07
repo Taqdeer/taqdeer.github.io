@@ -39,7 +39,7 @@ layout pageName content =
                     [ row [ centerX, centerY, mouseOver [ Font.color colors.gray, Font.size 25 ] ]
                         [ link []
                             { url = toPath TechnicalSkillsPage
-                            , label = text "Technical Skills"
+                            , label = text "Skills"
                             }
                         ]
                     , row [ centerX, centerY, mouseOver [ Font.color colors.gray, Font.size 25 ] ]
@@ -72,13 +72,20 @@ layout pageName content =
                             , label = text "Hackathons"
                             }
                         ]
+                    , row [ centerX, centerY, mouseOver [ Font.color colors.gray, Font.size 25 ] ]
+                        [ Element.newTabLink
+                            []
+                            { url = "https://github.com/taqdeer"
+                            , label = Element.image [ centerY, alignLeft, width (px 100), height (px 50) ] { src = "/images/github.svg", description = "github" }
+                            }
+                        ]
                     ]
                 ]
             ]
         , column [ width fill, height fill ]
             [ row
                 [ alignTop
-                , paddingEach { top = 50, left = 50, right = 50, bottom = 20 }
+                , paddingEach { top = 54, left = 50, right = 50, bottom = 20 }
                 , Font.size 35
                 , Border.widthEach { top = 0, left = 0, right = 0, bottom = 1 }
                 , Border.color colors.gray

@@ -10,27 +10,42 @@ import TechnicalSkills.Types exposing (..)
 
 view : Model -> Element Msg
 view model =
-    Layout.layout "Technical Skills" content
+    Layout.layout "Skills" content
 
 
 content =
-    column [ width fill, spacingXY 0 40 ]
-        [ row [ alignLeft ]
-            [ column [ alignLeft, spacing 10 ]
-                [ row [ Font.bold, alignLeft ] [ text "Full Proficiency in languages" ]
-                , row [ alignLeft ] [ text "C++, JavaScript, Java, Elm, F#, HTML5, CSS3" ]
+    row [ width fill, spacingXY 80 0 ]
+        [ column [ width fill, spacing 20 ]
+            [ row [ width fill, Font.alignLeft, Font.size 25, Font.bold ] [ text "Technical Skills " ]
+            , column [ width fill, spacingXY 0 5 ]
+                [ row [ width fill, Font.alignLeft, Font.size 15 ] [ text "Full Proficiency in languages" ]
+                , row [ width fill, Font.alignLeft, Font.size 15 ] [ text "C++, JavaScript, Java, Elm, F#, HTML5, CSS3" ]
+                ]
+            , column [ width fill, spacingXY 0 5 ]
+                [ row [ width fill, Font.alignLeft, Font.size 15 ] [ text "Working Proficiency in languages" ]
+                , row [ width fill, Font.alignLeft, Font.size 15 ] [ text "Python, jQuery, React, C, NodeJS, Assembly" ]
+                ]
+            , column [ width fill, spacingXY 0 5 ]
+                [ row [ width fill, Font.alignLeft, Font.size 15 ] [ text "Databases" ]
+                , row [ width fill, Font.alignLeft, Font.size 15 ] [ text "SQL, MongoDB, Oracle" ]
                 ]
             ]
-        , row [ alignLeft ]
-            [ column [ alignLeft, spacing 10 ]
-                [ row [ Font.bold, alignLeft ] [ text "Working knoweledge" ]
-                , row [ alignLeft ] [ text "Python, jQuery, React, C, NodeJS, Assembly" ]
+        , column [ width fill, spacing 20 ]
+            [ row [ width fill, Font.alignLeft, Font.size 25, Font.bold ] [ text "Soft Skills " ]
+            , row [ width fill, Font.size 15 ]
+                [ text "Fast learner"
                 ]
-            ]
-        , row [ alignLeft ]
-            [ column [ alignLeft, spacing 10 ]
-                [ row [ Font.bold, alignLeft ] [ text "Databases" ]
-                , row [ alignLeft ] [ text "SQL, MongoDB, Oracle" ]
+            , row [ width fill, Font.size 15 ]
+                [ text "Clean Coder"
+                ]
+            , row [ width fill, Font.size 15 ]
+                [ text "Results oriented"
+                ]
+            , row [ width fill, Font.size 15 ]
+                [ text "Effective communicator"
+                ]
+            , row [ width fill, Font.size 15 ]
+                [ text "Great in pair programming and team work"
                 ]
             ]
         ]

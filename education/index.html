@@ -6049,7 +6049,7 @@ var $author$project$Router$Routes$routes = $elm$url$Url$Parser$oneOf(
 			A2(
 			$elm$url$Url$Parser$map,
 			$author$project$Router$Routes$TechnicalSkillsPage,
-			$elm$url$Url$Parser$s('technicalskills')),
+			$elm$url$Url$Parser$s('skills')),
 			A2(
 			$elm$url$Url$Parser$map,
 			$author$project$Router$Routes$PersonalProjectsPage,
@@ -6197,7 +6197,7 @@ var $author$project$Router$Routes$toPath = function (page) {
 		case 'WorkExperiencePage':
 			return '/workexperience';
 		case 'TechnicalSkillsPage':
-			return '/technicalskills';
+			return '/skills';
 		case 'PersonalProjectsPage':
 			return '/personalprojects';
 		case 'GroupProjectsPage':
@@ -11909,6 +11909,82 @@ var $mdgriffith$elm_ui$Element$column = F2(
 						attrs))),
 			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
 	});
+var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
+var $elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
+var $mdgriffith$elm_ui$Element$image = F2(
+	function (attrs, _v0) {
+		var src = _v0.src;
+		var description = _v0.description;
+		var imageAttributes = A2(
+			$elm$core$List$filter,
+			function (a) {
+				switch (a.$) {
+					case 'Width':
+						return true;
+					case 'Height':
+						return true;
+					default:
+						return false;
+				}
+			},
+			attrs);
+		return A4(
+			$mdgriffith$elm_ui$Internal$Model$element,
+			$mdgriffith$elm_ui$Internal$Model$asEl,
+			$mdgriffith$elm_ui$Internal$Model$div,
+			A2(
+				$elm$core$List$cons,
+				$mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.imageContainer),
+				attrs),
+			$mdgriffith$elm_ui$Internal$Model$Unkeyed(
+				_List_fromArray(
+					[
+						A4(
+						$mdgriffith$elm_ui$Internal$Model$element,
+						$mdgriffith$elm_ui$Internal$Model$asEl,
+						$mdgriffith$elm_ui$Internal$Model$NodeName('img'),
+						_Utils_ap(
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Internal$Model$Attr(
+									$elm$html$Html$Attributes$src(src)),
+									$mdgriffith$elm_ui$Internal$Model$Attr(
+									$elm$html$Html$Attributes$alt(description))
+								]),
+							imageAttributes),
+						$mdgriffith$elm_ui$Internal$Model$Unkeyed(_List_Nil))
+					])));
+	});
+var $mdgriffith$elm_ui$Internal$Model$Max = F2(
+	function (a, b) {
+		return {$: 'Max', a: a, b: b};
+	});
+var $mdgriffith$elm_ui$Element$maximum = F2(
+	function (i, l) {
+		return A2($mdgriffith$elm_ui$Internal$Model$Max, i, l);
+	});
+var $mdgriffith$elm_ui$Internal$Model$PaddingStyle = F5(
+	function (a, b, c, d, e) {
+		return {$: 'PaddingStyle', a: a, b: b, c: c, d: d, e: e};
+	});
+var $mdgriffith$elm_ui$Internal$Flag$padding = $mdgriffith$elm_ui$Internal$Flag$flag(2);
+var $mdgriffith$elm_ui$Element$padding = function (x) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$padding,
+		A5(
+			$mdgriffith$elm_ui$Internal$Model$PaddingStyle,
+			'p-' + $elm$core$String$fromInt(x),
+			x,
+			x,
+			x,
+			x));
+};
 var $mdgriffith$elm_ui$Internal$Model$Describe = function (a) {
 	return {$: 'Describe', a: a};
 };
@@ -11950,6 +12026,17 @@ var $mdgriffith$elm_ui$Element$paragraph = F2(
 						attrs))),
 			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
 	});
+var $mdgriffith$elm_ui$Internal$Flag$borderRound = $mdgriffith$elm_ui$Internal$Flag$flag(17);
+var $mdgriffith$elm_ui$Element$Border$rounded = function (radius) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$borderRound,
+		A3(
+			$mdgriffith$elm_ui$Internal$Model$Single,
+			'br-' + $elm$core$String$fromInt(radius),
+			'border-radius',
+			$elm$core$String$fromInt(radius) + 'px'));
+};
 var $mdgriffith$elm_ui$Internal$Model$AsRow = {$: 'AsRow'};
 var $mdgriffith$elm_ui$Internal$Model$asRow = $mdgriffith$elm_ui$Internal$Model$AsRow;
 var $mdgriffith$elm_ui$Element$row = F2(
@@ -12055,7 +12142,8 @@ var $author$project$View$content = A2(
 								]),
 							_List_fromArray(
 								[
-									$mdgriffith$elm_ui$Element$text('I am passionate about computer science and believe that it can be used to not only have a better lifestyle but also a better ecosystem. ')
+									$mdgriffith$elm_ui$Element$text('I am passionate about computer science and software development. I believe that if technology can be used to become famous merely by just posting a random picture, then we can certainly use it to make much more important topics famous and visible to the world - for example, '),
+									$mdgriffith$elm_ui$Element$text('Climate Change, Art and Culture, etc.')
 								])),
 							A2(
 							$mdgriffith$elm_ui$Element$column,
@@ -12076,7 +12164,7 @@ var $author$project$View$content = A2(
 										]),
 									_List_fromArray(
 										[
-											$mdgriffith$elm_ui$Element$text('1) I am working on this project where a user will be able to gain points upon planting a tree')
+											$mdgriffith$elm_ui$Element$text('1) I am working on this project where a user will be able to gain points upon planting a tree. Upon gaining a certain number of points, they will be able to become a youth sensation and receive donations from others to help them continue their journey.')
 										])),
 									A2(
 									$mdgriffith$elm_ui$Element$paragraph,
@@ -12088,9 +12176,32 @@ var $author$project$View$content = A2(
 										]),
 									_List_fromArray(
 										[
-											$mdgriffith$elm_ui$Element$text('2) I am also working on another social media platform to promote linguistic skills. Here, users will be able to post poems, shayari, short stories, etc.')
+											$mdgriffith$elm_ui$Element$text('2) I am also working on another social media platform to promote creative linguistic skills. Here, users will be able to post poems, shayari, short stories, etc.')
 										]))
 								]))
+						])),
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+							$mdgriffith$elm_ui$Element$padding(20)
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$image,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$centerY,
+									$mdgriffith$elm_ui$Element$centerX,
+									$mdgriffith$elm_ui$Element$width(
+									A2($mdgriffith$elm_ui$Element$maximum, 200, $mdgriffith$elm_ui$Element$fill)),
+									$mdgriffith$elm_ui$Element$height(
+									A2($mdgriffith$elm_ui$Element$maximum, 400, $mdgriffith$elm_ui$Element$fill)),
+									$mdgriffith$elm_ui$Element$Border$rounded(10)
+								]),
+							{description: 'Taqdeer Grewal', src: 'images/profile-pic.jpg'})
 						]))
 				]))
 		]));
@@ -12163,14 +12274,6 @@ var $mdgriffith$elm_ui$Element$link = F2(
 			$mdgriffith$elm_ui$Internal$Model$Unkeyed(
 				_List_fromArray(
 					[label])));
-	});
-var $mdgriffith$elm_ui$Internal$Model$Max = F2(
-	function (a, b) {
-		return {$: 'Max', a: a, b: b};
-	});
-var $mdgriffith$elm_ui$Element$maximum = F2(
-	function (i, l) {
-		return A2($mdgriffith$elm_ui$Internal$Model$Max, i, l);
 	});
 var $mdgriffith$elm_ui$Internal$Model$Hover = {$: 'Hover'};
 var $mdgriffith$elm_ui$Internal$Model$PseudoSelector = F2(
@@ -12311,23 +12414,41 @@ var $mdgriffith$elm_ui$Element$mouseOver = function (decs) {
 			$mdgriffith$elm_ui$Internal$Model$Hover,
 			$mdgriffith$elm_ui$Internal$Model$unwrapDecorations(decs)));
 };
-var $mdgriffith$elm_ui$Internal$Model$PaddingStyle = F5(
-	function (a, b, c, d, e) {
-		return {$: 'PaddingStyle', a: a, b: b, c: c, d: d, e: e};
+var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
+var $mdgriffith$elm_ui$Element$newTabLink = F2(
+	function (attrs, _v0) {
+		var url = _v0.url;
+		var label = _v0.label;
+		return A4(
+			$mdgriffith$elm_ui$Internal$Model$element,
+			$mdgriffith$elm_ui$Internal$Model$asEl,
+			$mdgriffith$elm_ui$Internal$Model$NodeName('a'),
+			A2(
+				$elm$core$List$cons,
+				$mdgriffith$elm_ui$Internal$Model$Attr(
+					$elm$html$Html$Attributes$href(url)),
+				A2(
+					$elm$core$List$cons,
+					$mdgriffith$elm_ui$Internal$Model$Attr(
+						$elm$html$Html$Attributes$rel('noopener noreferrer')),
+					A2(
+						$elm$core$List$cons,
+						$mdgriffith$elm_ui$Internal$Model$Attr(
+							$elm$html$Html$Attributes$target('_blank')),
+						A2(
+							$elm$core$List$cons,
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$shrink),
+							A2(
+								$elm$core$List$cons,
+								$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$shrink),
+								A2(
+									$elm$core$List$cons,
+									$mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.contentCenterX + (' ' + $mdgriffith$elm_ui$Internal$Style$classes.contentCenterY)),
+									attrs)))))),
+			$mdgriffith$elm_ui$Internal$Model$Unkeyed(
+				_List_fromArray(
+					[label])));
 	});
-var $mdgriffith$elm_ui$Internal$Flag$padding = $mdgriffith$elm_ui$Internal$Flag$flag(2);
-var $mdgriffith$elm_ui$Element$padding = function (x) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$padding,
-		A5(
-			$mdgriffith$elm_ui$Internal$Model$PaddingStyle,
-			'p-' + $elm$core$String$fromInt(x),
-			x,
-			x,
-			x,
-			x));
-};
 var $mdgriffith$elm_ui$Internal$Model$paddingName = F4(
 	function (top, right, bottom, left) {
 		return 'pad-' + ($elm$core$String$fromInt(top) + ('-' + ($elm$core$String$fromInt(right) + ('-' + ($elm$core$String$fromInt(bottom) + ('-' + $elm$core$String$fromInt(left)))))));
@@ -12379,6 +12500,10 @@ var $mdgriffith$elm_ui$Element$paddingXY = F2(
 				y,
 				x));
 	});
+var $mdgriffith$elm_ui$Internal$Model$Px = function (a) {
+	return {$: 'Px', a: a};
+};
+var $mdgriffith$elm_ui$Element$px = $mdgriffith$elm_ui$Internal$Model$Px;
 var $mdgriffith$elm_ui$Internal$Flag$overflow = $mdgriffith$elm_ui$Internal$Flag$flag(20);
 var $mdgriffith$elm_ui$Element$scrollbarY = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$overflow, $mdgriffith$elm_ui$Internal$Style$classes.scrollbarsY);
 var $mdgriffith$elm_ui$Internal$Model$boxShadowName = function (shadow) {
@@ -12543,7 +12668,7 @@ var $author$project$Layout$layout = F2(
 													$mdgriffith$elm_ui$Element$link,
 													_List_Nil,
 													{
-														label: $mdgriffith$elm_ui$Element$text('Technical Skills'),
+														label: $mdgriffith$elm_ui$Element$text('Skills'),
 														url: $author$project$Router$Routes$toPath($author$project$Router$Routes$TechnicalSkillsPage)
 													})
 												])),
@@ -12661,6 +12786,40 @@ var $author$project$Layout$layout = F2(
 														label: $mdgriffith$elm_ui$Element$text('Hackathons'),
 														url: $author$project$Router$Routes$toPath($author$project$Router$Routes$HackathonsPage)
 													})
+												])),
+											A2(
+											$mdgriffith$elm_ui$Element$row,
+											_List_fromArray(
+												[
+													$mdgriffith$elm_ui$Element$centerX,
+													$mdgriffith$elm_ui$Element$centerY,
+													$mdgriffith$elm_ui$Element$mouseOver(
+													_List_fromArray(
+														[
+															$mdgriffith$elm_ui$Element$Font$color($author$project$Styles$colors.gray),
+															$mdgriffith$elm_ui$Element$Font$size(25)
+														]))
+												]),
+											_List_fromArray(
+												[
+													A2(
+													$mdgriffith$elm_ui$Element$newTabLink,
+													_List_Nil,
+													{
+														label: A2(
+															$mdgriffith$elm_ui$Element$image,
+															_List_fromArray(
+																[
+																	$mdgriffith$elm_ui$Element$centerY,
+																	$mdgriffith$elm_ui$Element$alignLeft,
+																	$mdgriffith$elm_ui$Element$width(
+																	$mdgriffith$elm_ui$Element$px(100)),
+																	$mdgriffith$elm_ui$Element$height(
+																	$mdgriffith$elm_ui$Element$px(50))
+																]),
+															{description: 'github', src: '/images/github.svg'}),
+														url: 'https://github.com/taqdeer'
+													})
 												]))
 										]))
 								]))
@@ -12680,7 +12839,7 @@ var $author$project$Layout$layout = F2(
 								[
 									$mdgriffith$elm_ui$Element$alignTop,
 									$mdgriffith$elm_ui$Element$paddingEach(
-									{bottom: 20, left: 50, right: 50, top: 50}),
+									{bottom: 20, left: 50, right: 50, top: 54}),
 									$mdgriffith$elm_ui$Element$Font$size(35),
 									$mdgriffith$elm_ui$Element$Border$widthEach(
 									{bottom: 1, left: 0, right: 0, top: 0}),
@@ -13123,7 +13282,7 @@ var $author$project$Hackathons$View$content = A2(
 										]),
 									_List_fromArray(
 										[
-											$mdgriffith$elm_ui$Element$text('Won Wolfram Alpha Award in one of the hackathons for implementing a project. The project’s motive is to pay tribute to the retired policemen and soldiers to improve their mental health. ')
+											$mdgriffith$elm_ui$Element$text('Won Wolfram Alpha Award in one of the hackathons for implementing a project for the veterans. The project’s motive is to pay tribute to the retired policemen and soldiers to improve their mental health. ')
 										]))
 								]))
 						]))
@@ -13302,33 +13461,53 @@ var $author$project$PersonalProjects$View$view = function (model) {
 	return A2($author$project$Layout$layout, 'Personal Projects', $author$project$PersonalProjects$View$content);
 };
 var $author$project$TechnicalSkills$View$content = A2(
-	$mdgriffith$elm_ui$Element$column,
+	$mdgriffith$elm_ui$Element$row,
 	_List_fromArray(
 		[
 			$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-			A2($mdgriffith$elm_ui$Element$spacingXY, 0, 40)
+			A2($mdgriffith$elm_ui$Element$spacingXY, 80, 0)
 		]),
 	_List_fromArray(
 		[
 			A2(
-			$mdgriffith$elm_ui$Element$row,
-			_List_fromArray(
-				[$mdgriffith$elm_ui$Element$alignLeft]),
+			$mdgriffith$elm_ui$Element$column,
 			_List_fromArray(
 				[
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+					$mdgriffith$elm_ui$Element$spacing(20)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$row,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+							$mdgriffith$elm_ui$Element$Font$alignLeft,
+							$mdgriffith$elm_ui$Element$Font$size(25),
+							$mdgriffith$elm_ui$Element$Font$bold
+						]),
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$text('Technical Skills ')
+						])),
 					A2(
 					$mdgriffith$elm_ui$Element$column,
 					_List_fromArray(
 						[
-							$mdgriffith$elm_ui$Element$alignLeft,
-							$mdgriffith$elm_ui$Element$spacing(10)
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+							A2($mdgriffith$elm_ui$Element$spacingXY, 0, 5)
 						]),
 					_List_fromArray(
 						[
 							A2(
 							$mdgriffith$elm_ui$Element$row,
 							_List_fromArray(
-								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+								[
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									$mdgriffith$elm_ui$Element$Font$alignLeft,
+									$mdgriffith$elm_ui$Element$Font$size(15)
+								]),
 							_List_fromArray(
 								[
 									$mdgriffith$elm_ui$Element$text('Full Proficiency in languages')
@@ -13336,65 +13515,67 @@ var $author$project$TechnicalSkills$View$content = A2(
 							A2(
 							$mdgriffith$elm_ui$Element$row,
 							_List_fromArray(
-								[$mdgriffith$elm_ui$Element$alignLeft]),
+								[
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									$mdgriffith$elm_ui$Element$Font$alignLeft,
+									$mdgriffith$elm_ui$Element$Font$size(15)
+								]),
 							_List_fromArray(
 								[
 									$mdgriffith$elm_ui$Element$text('C++, JavaScript, Java, Elm, F#, HTML5, CSS3')
 								]))
-						]))
-				])),
-			A2(
-			$mdgriffith$elm_ui$Element$row,
-			_List_fromArray(
-				[$mdgriffith$elm_ui$Element$alignLeft]),
-			_List_fromArray(
-				[
+						])),
 					A2(
 					$mdgriffith$elm_ui$Element$column,
 					_List_fromArray(
 						[
-							$mdgriffith$elm_ui$Element$alignLeft,
-							$mdgriffith$elm_ui$Element$spacing(10)
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+							A2($mdgriffith$elm_ui$Element$spacingXY, 0, 5)
 						]),
 					_List_fromArray(
 						[
 							A2(
 							$mdgriffith$elm_ui$Element$row,
 							_List_fromArray(
-								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+								[
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									$mdgriffith$elm_ui$Element$Font$alignLeft,
+									$mdgriffith$elm_ui$Element$Font$size(15)
+								]),
 							_List_fromArray(
 								[
-									$mdgriffith$elm_ui$Element$text('Working knoweledge')
+									$mdgriffith$elm_ui$Element$text('Working Proficiency in languages')
 								])),
 							A2(
 							$mdgriffith$elm_ui$Element$row,
 							_List_fromArray(
-								[$mdgriffith$elm_ui$Element$alignLeft]),
+								[
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									$mdgriffith$elm_ui$Element$Font$alignLeft,
+									$mdgriffith$elm_ui$Element$Font$size(15)
+								]),
 							_List_fromArray(
 								[
 									$mdgriffith$elm_ui$Element$text('Python, jQuery, React, C, NodeJS, Assembly')
 								]))
-						]))
-				])),
-			A2(
-			$mdgriffith$elm_ui$Element$row,
-			_List_fromArray(
-				[$mdgriffith$elm_ui$Element$alignLeft]),
-			_List_fromArray(
-				[
+						])),
 					A2(
 					$mdgriffith$elm_ui$Element$column,
 					_List_fromArray(
 						[
-							$mdgriffith$elm_ui$Element$alignLeft,
-							$mdgriffith$elm_ui$Element$spacing(10)
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+							A2($mdgriffith$elm_ui$Element$spacingXY, 0, 5)
 						]),
 					_List_fromArray(
 						[
 							A2(
 							$mdgriffith$elm_ui$Element$row,
 							_List_fromArray(
-								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+								[
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									$mdgriffith$elm_ui$Element$Font$alignLeft,
+									$mdgriffith$elm_ui$Element$Font$size(15)
+								]),
 							_List_fromArray(
 								[
 									$mdgriffith$elm_ui$Element$text('Databases')
@@ -13402,16 +13583,98 @@ var $author$project$TechnicalSkills$View$content = A2(
 							A2(
 							$mdgriffith$elm_ui$Element$row,
 							_List_fromArray(
-								[$mdgriffith$elm_ui$Element$alignLeft]),
+								[
+									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+									$mdgriffith$elm_ui$Element$Font$alignLeft,
+									$mdgriffith$elm_ui$Element$Font$size(15)
+								]),
 							_List_fromArray(
 								[
 									$mdgriffith$elm_ui$Element$text('SQL, MongoDB, Oracle')
 								]))
 						]))
+				])),
+			A2(
+			$mdgriffith$elm_ui$Element$column,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+					$mdgriffith$elm_ui$Element$spacing(20)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$row,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+							$mdgriffith$elm_ui$Element$Font$alignLeft,
+							$mdgriffith$elm_ui$Element$Font$size(25),
+							$mdgriffith$elm_ui$Element$Font$bold
+						]),
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$text('Soft Skills ')
+						])),
+					A2(
+					$mdgriffith$elm_ui$Element$row,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+							$mdgriffith$elm_ui$Element$Font$size(15)
+						]),
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$text('Fast learner')
+						])),
+					A2(
+					$mdgriffith$elm_ui$Element$row,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+							$mdgriffith$elm_ui$Element$Font$size(15)
+						]),
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$text('Clean Coder')
+						])),
+					A2(
+					$mdgriffith$elm_ui$Element$row,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+							$mdgriffith$elm_ui$Element$Font$size(15)
+						]),
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$text('Results oriented')
+						])),
+					A2(
+					$mdgriffith$elm_ui$Element$row,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+							$mdgriffith$elm_ui$Element$Font$size(15)
+						]),
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$text('Effective communicator')
+						])),
+					A2(
+					$mdgriffith$elm_ui$Element$row,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+							$mdgriffith$elm_ui$Element$Font$size(15)
+						]),
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$text('Great in pair programming and team work')
+						]))
 				]))
 		]));
 var $author$project$TechnicalSkills$View$view = function (model) {
-	return A2($author$project$Layout$layout, 'Technical Skills', $author$project$TechnicalSkills$View$content);
+	return A2($author$project$Layout$layout, 'Skills', $author$project$TechnicalSkills$View$content);
 };
 var $author$project$WorkExperience$View$content = A2(
 	$mdgriffith$elm_ui$Element$column,
@@ -13488,7 +13751,7 @@ var $author$project$WorkExperience$View$content = A2(
 										]),
 									_List_fromArray(
 										[
-											$mdgriffith$elm_ui$Element$text(' Developed the front end, client facing website https://www.withflint.com using Elm which resulted in the promotion of Flint\'s face in a creative manner.')
+											$mdgriffith$elm_ui$Element$text(' Developed the front end single page application from scratch which is live at https://www.withflint.com. The complete website has been written in Elm.')
 										])),
 									A2(
 									$mdgriffith$elm_ui$Element$paragraph,
@@ -13524,7 +13787,7 @@ var $author$project$WorkExperience$View$content = A2(
 										]),
 									_List_fromArray(
 										[
-											$mdgriffith$elm_ui$Element$text(' One of the biggest challenges and learning curve which I passed was that I learnt Functional programming within a span of three weeks which in turn got identified as an imperative asset by the software team at Flint. ')
+											$mdgriffith$elm_ui$Element$text(' One of the biggest challenges which I faced was that I had no experience in functional programming. Still, I learnt Elm within a span of three weeks which in turn got identified as an imperative asset by the software team at Flint. ')
 										]))
 								]))
 						]))
@@ -13595,7 +13858,7 @@ var $author$project$WorkExperience$View$content = A2(
 										]),
 									_List_fromArray(
 										[
-											$mdgriffith$elm_ui$Element$text('Marked labs by testing code and give specific and detailed feedbacks to students about their mistakes which improve their programming skills significantly. ')
+											$mdgriffith$elm_ui$Element$text(' Marked labs by testing code and give specific and detailed feedbacks to students about their mistakes which improve their programming skills significantly. ')
 										])),
 									A2(
 									$mdgriffith$elm_ui$Element$paragraph,
@@ -13607,7 +13870,7 @@ var $author$project$WorkExperience$View$content = A2(
 										]),
 									_List_fromArray(
 										[
-											$mdgriffith$elm_ui$Element$text('Tutored students in small groups as well as individually which boosts up their confidence and knowledge and improve their team-work skills. ')
+											$mdgriffith$elm_ui$Element$text(' Tutored students in small groups as well as individually which boosts up their confidence and knowledge and improve their team-work skills. ')
 										])),
 									A2(
 									$mdgriffith$elm_ui$Element$paragraph,
@@ -13619,7 +13882,7 @@ var $author$project$WorkExperience$View$content = A2(
 										]),
 									_List_fromArray(
 										[
-											$mdgriffith$elm_ui$Element$text('Conducted live question-answer sessions with students to detect plagiarism and understand their knowledge of the concepts')
+											$mdgriffith$elm_ui$Element$text(' Conducted live question-answer sessions with students to detect plagiarism and understand their knowledge of the concepts')
 										])),
 									A2(
 									$mdgriffith$elm_ui$Element$paragraph,
@@ -13631,7 +13894,7 @@ var $author$project$WorkExperience$View$content = A2(
 										]),
 									_List_fromArray(
 										[
-											$mdgriffith$elm_ui$Element$text('Read 50 assignments with at least 50 lines of code per week which has improved my code debugging skills substantially')
+											$mdgriffith$elm_ui$Element$text(' Read 50 assignments with at least 50 lines of code per week which has improved my code debugging skills substantially')
 										]))
 								]))
 						]))
