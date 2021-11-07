@@ -19,7 +19,7 @@ content =
     column [ width fill, spacingXY 0 50 ]
         [ row [ alignLeft, width fill ]
             [ column [ alignLeft, spacing 10, width fill ]
-                [ row [ Font.bold, alignLeft ] [ text "Flint" ]
+                [ row [ Font.bold, alignLeft ] [ text "Flint (YC 2020)" ]
                 , row [ alignLeft, Font.size 16 ] [ text "Sept 2021 - Present" ]
                 , row [ alignLeft ] [ text "Full Stack Software Developer" ]
                 , column [ alignLeft, width fill, spacingXY 0 20 ]
