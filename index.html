@@ -6383,6 +6383,7 @@ var $mdgriffith$elm_ui$Element$rgb255 = F3(
 var $author$project$Styles$colors = {
 	blue: A3($mdgriffith$elm_ui$Element$rgb255, 16, 33, 46),
 	gray: A3($mdgriffith$elm_ui$Element$rgb255, 160, 160, 160),
+	red: A3($mdgriffith$elm_ui$Element$rgb255, 200, 0, 0),
 	white: A3($mdgriffith$elm_ui$Element$rgb255, 224, 224, 224)
 };
 var $mdgriffith$elm_ui$Internal$Model$Unkeyed = function (a) {
@@ -13291,6 +13292,9 @@ var $author$project$Hackathons$View$content = A2(
 var $author$project$Hackathons$View$view = function (model) {
 	return A2($author$project$Layout$layout, 'Hackathons', $author$project$Hackathons$View$content);
 };
+var $mdgriffith$elm_ui$Internal$Model$Right = {$: 'Right'};
+var $mdgriffith$elm_ui$Element$alignRight = $mdgriffith$elm_ui$Internal$Model$AlignX($mdgriffith$elm_ui$Internal$Model$Right);
+var $mdgriffith$elm_ui$Element$Font$underline = $mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.underline);
 var $author$project$PersonalProjects$View$content = A2(
 	$mdgriffith$elm_ui$Element$column,
 	_List_fromArray(
@@ -13406,7 +13410,11 @@ var $author$project$PersonalProjects$View$content = A2(
 							A2(
 							$mdgriffith$elm_ui$Element$row,
 							_List_fromArray(
-								[$mdgriffith$elm_ui$Element$Font$bold, $mdgriffith$elm_ui$Element$alignLeft]),
+								[
+									$mdgriffith$elm_ui$Element$Font$bold,
+									$mdgriffith$elm_ui$Element$alignLeft,
+									A2($mdgriffith$elm_ui$Element$spacingXY, 10, 0)
+								]),
 							_List_fromArray(
 								[
 									$mdgriffith$elm_ui$Element$text('Score')
@@ -13417,41 +13425,92 @@ var $author$project$PersonalProjects$View$content = A2(
 								[$mdgriffith$elm_ui$Element$alignLeft]),
 							_List_fromArray(
 								[
-									$mdgriffith$elm_ui$Element$text('SQL, MongoDB, Oracle')
+									$mdgriffith$elm_ui$Element$text('JavaScript')
 								])),
 							A2(
-							$mdgriffith$elm_ui$Element$column,
+							$mdgriffith$elm_ui$Element$row,
 							_List_fromArray(
 								[
 									$mdgriffith$elm_ui$Element$alignLeft,
 									$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-									A2($mdgriffith$elm_ui$Element$spacingXY, 0, 20)
+									A2($mdgriffith$elm_ui$Element$spacingXY, 20, 20)
 								]),
 							_List_fromArray(
 								[
 									A2(
-									$mdgriffith$elm_ui$Element$paragraph,
+									$mdgriffith$elm_ui$Element$column,
 									_List_fromArray(
 										[
 											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-											$mdgriffith$elm_ui$Element$Font$alignLeft,
-											$mdgriffith$elm_ui$Element$Font$size(15)
+											A2($mdgriffith$elm_ui$Element$spacingXY, 0, 20)
 										]),
 									_List_fromArray(
 										[
-											$mdgriffith$elm_ui$Element$text('Designed for one player, project is an interactive game which can run on any search engine. It has been inspired from the classic game named Dangerous Dave')
+											A2(
+											$mdgriffith$elm_ui$Element$paragraph,
+											_List_fromArray(
+												[
+													$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+													$mdgriffith$elm_ui$Element$Font$alignLeft,
+													$mdgriffith$elm_ui$Element$Font$size(15)
+												]),
+											_List_fromArray(
+												[
+													$mdgriffith$elm_ui$Element$text('Designed for one player, project is an interactive game which can run on any search engine. It has been inspired from the classic game named Dangerous Dave')
+												])),
+											A2(
+											$mdgriffith$elm_ui$Element$paragraph,
+											_List_fromArray(
+												[
+													$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+													$mdgriffith$elm_ui$Element$Font$alignLeft,
+													$mdgriffith$elm_ui$Element$Font$size(15)
+												]),
+											_List_fromArray(
+												[
+													$mdgriffith$elm_ui$Element$text('The game has been written in plain JavaScript using objects and functions. It uses event driven functionality of JavaScript and has been embedded in HTML5')
+												]))
 										])),
 									A2(
-									$mdgriffith$elm_ui$Element$paragraph,
+									$mdgriffith$elm_ui$Element$column,
 									_List_fromArray(
 										[
 											$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-											$mdgriffith$elm_ui$Element$Font$alignLeft,
-											$mdgriffith$elm_ui$Element$Font$size(15)
+											$mdgriffith$elm_ui$Element$alignRight
 										]),
 									_List_fromArray(
 										[
-											$mdgriffith$elm_ui$Element$text('The game has been written in plain JavaScript using objects and functions. It uses event driven functionality of JavaScript and has been embedded in HTML5')
+											A2(
+											$mdgriffith$elm_ui$Element$newTabLink,
+											_List_fromArray(
+												[
+													$mdgriffith$elm_ui$Element$Font$underline,
+													$mdgriffith$elm_ui$Element$Font$size(15),
+													$mdgriffith$elm_ui$Element$Font$color($author$project$Styles$colors.red),
+													$mdgriffith$elm_ui$Element$centerX,
+													$mdgriffith$elm_ui$Element$Border$shadow(
+													{
+														blur: 3,
+														color: $author$project$Styles$colors.gray,
+														offset: _Utils_Tuple2(0, 0),
+														size: 1
+													}),
+													$mdgriffith$elm_ui$Element$padding(10)
+												]),
+											{
+												label: A2(
+													$mdgriffith$elm_ui$Element$image,
+													_List_fromArray(
+														[
+															$mdgriffith$elm_ui$Element$width(
+															$mdgriffith$elm_ui$Element$px(150)),
+															$mdgriffith$elm_ui$Element$height(
+															$mdgriffith$elm_ui$Element$px(150)),
+															$mdgriffith$elm_ui$Element$centerX
+														]),
+													{description: 'ScoreImage', src: 'images/score.jpeg'}),
+												url: 'http://mylinux.langara.bc.ca/~tgrewal/jsGame/prototype.html'
+											})
 										]))
 								]))
 						]))

@@ -1,6 +1,7 @@
 module PersonalProjects.View exposing (..)
 
 import Element exposing (..)
+import Element.Border as Border
 import Element.Font as Font
 import Layout exposing (..)
 import PersonalProjects.Types exposing (..)
@@ -27,11 +28,40 @@ content =
             ]
         , row [ alignLeft, width fill ]
             [ column [ alignLeft, spacing 10, width fill ]
-                [ row [ Font.bold, alignLeft ] [ text "Score" ]
-                , row [ alignLeft ] [ text "SQL, MongoDB, Oracle" ]
-                , column [ alignLeft, width fill, spacingXY 0 20 ]
-                    [ paragraph [ width fill, Font.alignLeft, Font.size 15 ] [ text "Designed for one player, project is an interactive game which can run on any search engine. It has been inspired from the classic game named Dangerous Dave" ]
-                    , paragraph [ width fill, Font.alignLeft, Font.size 15 ] [ text "The game has been written in plain JavaScript using objects and functions. It uses event driven functionality of JavaScript and has been embedded in HTML5" ]
+                [ row [ Font.bold, alignLeft, spacingXY 10 0 ]
+                    [ text "Score"
+                    ]
+                , row [ alignLeft ] [ text "JavaScript" ]
+                , row [ alignLeft, width fill, spacingXY 20 20 ]
+                    [ column [ width fill, spacingXY 0 20 ]
+                        [ paragraph [ width fill, Font.alignLeft, Font.size 15 ] [ text "Designed for one player, project is an interactive game which can run on any search engine. It has been inspired from the classic game named Dangerous Dave" ]
+                        , paragraph [ width fill, Font.alignLeft, Font.size 15 ] [ text "The game has been written in plain JavaScript using objects and functions. It uses event driven functionality of JavaScript and has been embedded in HTML5" ]
+                        ]
+                    , column
+                        [ width fill
+                        , alignRight
+                        ]
+                        [ Element.newTabLink
+                            [ Font.underline
+                            , Font.size 15
+                            , Font.color colors.red
+                            , centerX
+                            , Border.shadow
+                                { offset = ( 0, 0 )
+                                , size = 1
+                                , blur = 3
+                                , color = colors.gray
+                                }
+                            , padding 10
+                            ]
+                            { url = "http://mylinux.langara.bc.ca/~tgrewal/jsGame/prototype.html"
+                            , label =
+                                image [ width <| px 150, height <| px 150, centerX ]
+                                    { description = "ScoreImage"
+                                    , src = "images/score.jpeg"
+                                    }
+                            }
+                        ]
                     ]
                 ]
             ]

@@ -22,6 +22,7 @@ colors =
     { blue = rgb255 16 33 46
     , white = rgb255 224 224 224
     , gray = rgb255 160 160 160
+    , red = rgb255 200 0 0
     }
 
 
